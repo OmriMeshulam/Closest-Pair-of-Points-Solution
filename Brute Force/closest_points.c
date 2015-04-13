@@ -7,6 +7,7 @@ The code should include these headers
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "point.h"
 //and the Point structure should adhere to contain the following 2 values
 struct Point
 {
@@ -15,7 +16,7 @@ struct Point
 */
 
 // Must contain >= 2 points
-struct Point * bruteForceClosest(struct Point P[], int n)
+struct Point * bFClosestPoints(struct Point P[], int n)
 {
     if ((n < 2) || (P == NULL)){
         fprintf(stderr, "Error: not enough points to find closest pair");
@@ -52,7 +53,7 @@ int main(){
     struct Point myPlain[3] = {{0,1},{5,10},{13,14}};
     int n = sizeof(myPlain)/sizeof(myPlain[0]);
 
-    struct Point *closest = bruteForceClosest(myPlain,n) ;
+    struct Point *closest = bFClosestPoints(myPlain,n) ;
 
     printf( "Closest Pairs: \n"
             "X1: %i Y1: %i\n"
