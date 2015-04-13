@@ -1,6 +1,6 @@
 /*
 Coded by Omri Meshulam
-The closest method is the optimal divide and conquer method that takes a list of points
+The closestPoints method is the optimal divide and conquer method that takes a list of points
 on a plane, and returns the two closest points. Parameters array of points P[] of size n.
 Space and time complexity of O(n log n)
 //The code should include these headers
@@ -8,16 +8,12 @@ Space and time complexity of O(n log n)
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-//and the Point structure should adhere to contain the following 2 values
-struct Point
-{
-    int x, y;
-};
+#include "point.h"
 */
-
 /* Following two functions are needed for library function qsort().
    Refer: http://www.cplusplus.com/reference/clibrary/cstdlib/qsort/ */
 // Needed to sort array of points according to X coordinate
+
 int compareX(const void* a, const void* b)
 {
     struct Point *p1 = (struct Point *)a,  *p2 = (struct Point *)b;
@@ -137,7 +133,7 @@ float closestUtil(struct Point P[], int n, struct Point *p1, struct Point *p2)
     return final_min;
 }
 
-struct Point * closest(struct Point P[], int n)
+struct Point * closestPoints(struct Point P[], int n)
 {
     if ((n < 2) || (P == NULL)){
         fprintf(stderr, "Error: not enough points to find closest pair");
@@ -168,7 +164,7 @@ int main(){
     struct Point opPlain[5] = {{39,31},{31,10},{13,14},{25,133},{23,14}};
     int oN = sizeof(opPlain)/sizeof(opPlain[0]);
 
-    struct Point *opClosest = closest(opPlain,oN) ;
+    struct Point *opClosest = closestPoints(opPlain,oN) ;
     printf( "Closest Pairs: \n"
             "X1: %i Y1: %i\n"
             "X2: %i Y2: %i\n", opClosest[0].x, opClosest[0].y, opClosest[1].x, opClosest[1].y);
